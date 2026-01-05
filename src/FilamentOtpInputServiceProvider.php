@@ -1,5 +1,5 @@
 <?php
-namespace NeedLaravelSite\ContactForm\Src;
+namespace NeedLaravelSite\FilamentOtpInput\Src;
 
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;

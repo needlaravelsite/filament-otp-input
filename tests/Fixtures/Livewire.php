@@ -1,6 +1,6 @@
 <?php
 
-namespace NeedLaravelSite\ContactForm\Tests\Fixtures;
+namespace NeedLaravelSite\FilamentOtpInput\Tests\Fixtures;
 
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;

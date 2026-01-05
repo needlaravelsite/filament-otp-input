@@ -1,5 +1,5 @@
 <?php
-namespace NeedLaravelSite\ContactForm\Components;
+namespace NeedLaravelSite\FilamentOtpInput\Components;
 
 use _PHPStan_11268e5ee\Nette\PhpGenerator\Closure;
 use Filament\Forms\Components\Actions\Action;

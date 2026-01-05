@@ -1,13 +1,15 @@
 {
-    "name": "needlaravelsite/contactform",
+    "name": "needlaravelsite/filament-otp-input",
+    "description": "Filament otp input",
+    "type": "library",
     "autoload": {
         "psr-4": {
-            "Needlaravelsite\\Contactform\\": "src/"
+            "Needlaravelsite\\FilamentOtpInput\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Muhammad Noman",
+            "name": "Muhammad",
             "email": "m.nomaniu@gmail.com"
         }
     ],
