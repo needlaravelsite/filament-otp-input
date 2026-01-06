@@ -3,22 +3,22 @@ namespace NeedLaravelSite\FilamentOtpInput\Src;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
+use Illuminate\Support\ServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentOtpInputServiceProvider extends PackageServiceProvider
+class FilamentOtpInputServiceProvider extends ServiceProvider
 {
-    public static string $name = 'filament-otp-input';
-
-    public function configurePackage(Package $package): void
+    public function boot(): void
     {
-        $package
-            ->name(static::$name)
-            ->hasViews();
-    }
+        // This is the critical line - loads your views
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filament-otp-input');
 
-    public function packageBooted(): void
-    {
-        // Register any additional assets if needed
+        // Optional: allow users to publish views
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/filament-otp-input'),
+            ], 'filament-otp-input-views');
+        }
     }
 }
