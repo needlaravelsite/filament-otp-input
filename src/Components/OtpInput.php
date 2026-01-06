@@ -2,69 +2,94 @@
 namespace NeedLaravelSite\FilamentOtpInput\Components;
 
 use Filament\Forms\Components\Field;
-use Filament\Schemas\Components\Contracts\HasAffixActions;
-use Filament\Support\Concerns\HasExtraAlpineAttributes;
-use Filament\Forms\Components\Concerns;
-use Filament\Forms\Components\Contracts;
 
-class OtpInput extends Field implements Contracts\CanBeLengthConstrained, HasAffixActions
+class OtpInput extends Field
 {
-    use Concerns\CanBeAutocapitalized;
-    use Concerns\CanBeAutocompleted;
-    use Concerns\CanBeLengthConstrained;
-    use Concerns\CanBeReadOnly;
-    use Concerns\HasAffixes;
-    use Concerns\HasExtraInputAttributes;
-    use HasExtraAlpineAttributes;
-
     protected string $view = 'filament-otp-input::components.otp-input';
 
-    protected int | \Closure | null $numberInput = 4;
+    protected int $numberInputs = 4;
 
-    protected bool | \Closure | null $isRtl = false;
+    protected string $inputType = 'number';
 
-    protected string | \Closure | null $type = 'number';
+    protected bool $autoFocus = true;
 
-    public function numberInput(int | \Closure $number = 4):static
+    /**
+     * Set the number of OTP input fields
+     */
+    public function numberInput(int $count): static
     {
-        $this->numberInput = $number;
+        $this->numberInputs = $count;
+
         return $this;
     }
 
-    public function getNumberInput():int
+    /**
+     * Get the number of inputs
+     */
+    public function getNumberInputs(): int
     {
-        return $this->evaluate($this->numberInput);
+        return $this->numberInputs;
     }
 
-
+    /**
+     * Set input type to password
+     */
     public function password(): static
     {
-        $this->type = 'password';
+        $this->inputType = 'password';
 
         return $this;
     }
 
+    /**
+     * Set input type to text
+     */
     public function text(): static
     {
-        $this->type = 'text';
+        $this->inputType = 'text';
 
         return $this;
     }
 
-    public function getType(): string
+    /**
+     * Get the input type
+     */
+    public function getInputType(): string
     {
-        return $this->evaluate($this->type);
+        return $this->inputType;
     }
 
-    public function rtl(bool|\Closure $condition = false): static
+    /**
+     * Disable auto focus on first input
+     */
+    public function disableAutoFocus(): static
     {
-        $this->isRtl = $condition;
+        $this->autoFocus = false;
 
         return $this;
     }
 
-    public function getInputsContainerDirection(): string
+    /**
+     * Check if auto focus is enabled
+     */
+    public function hasAutoFocus(): bool
     {
-        return $this->evaluate($this->isRtl);
+        return $this->autoFocus;
+    }
+
+    /**
+     * Set up the component
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->dehydrateStateUsing(function ($state): ?string {
+            if (is_array($state)) {
+                return implode('', $state);
+            }
+
+            return $state;
+        });
     }
 }
