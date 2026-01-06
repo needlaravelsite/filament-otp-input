@@ -27,13 +27,6 @@
             "NeedLaravelSite\\FilamentOtpInput\\Tests\\": "tests/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "NeedLaravelSite\\FilamentOtpInput\\FilamentOtpInputServiceProvider"
-            ]
-        }
-    },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
