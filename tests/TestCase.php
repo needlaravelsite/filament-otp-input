@@ -1,7 +1,7 @@
 <?php
 namespace NeedLaravelSite\ContactForm\Tests;
 
-use NeedLaravelSite\ContactForm\Src\FilamentOtpInputServiceProvider;
+use NeedLaravelSite\FilamentOtpInput\Src\FilamentOtpInputServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 class TestCase extends Orchestra
 {

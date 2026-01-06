@@ -1,5 +1,0 @@
-<?php
-
-use HasanAhani\FilamentOtpInput\Tests\TestCase;
-
-uses(TestCase::class)->in(__DIR__);
